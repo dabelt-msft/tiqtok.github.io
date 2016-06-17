@@ -34,9 +34,8 @@ $('#submitButton').on("click", function(e) {
     var description = $('#description-input').val();
     var time = $('#time-input').val();
     var priority = $('#priority-input').val();
-    var addedItem = toDo.addItem(title, description, time, priority);
     if(title!=""){
-      console.log(addedItem.time + addedItem.priority)
+      var addedItem = toDo.addItem(title, description, time, priority);
       addItemToPage(addedItem);
       //$('#draggablePanelList').append('<li class="panel panel-info"><div class="panel-heading">' + addedItem.title + '</div><div class="panel-body">' + addedItem.description + '</div></li>')
           // $('#draggablePanelList').append("<li>" + addedItem.title + addedItem.time + addedItem.priority + "</li>");
