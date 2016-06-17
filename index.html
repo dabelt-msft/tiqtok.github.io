@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>rp30 Trello Hack</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="toDoTitle"></label>
+        <input type="text" id="toDoTitle" title="To Do Name" placeholder="What do you need to do?"><br>
+        <input type="text" id="toDoDescription" title="Description" placeholder="Want to add a description?"><br>
+        <input type="button" id="btnSubmit"  value="Submit">
+      </div>
+      <div class="container">
+          <ul id="toDoList">
+          </ul
+      </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="js/app.js"></script>
+    <script type="text/javascript">
+      var toDo=toDoApp;
+      $('#btnSubmit').on("click", function(){
+        var title=$('#toDoTitle').val();
+        var description=$('#toDoDescription').val();
+        var addedItem=toDo.addItem(title, description);
+        $('#toDoList').append("<li>" + addedItem.title + "</li>");
+      });
+    </script>
+
+  </body>
+</html>
