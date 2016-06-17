@@ -17,6 +17,13 @@
         .top-buffer {
             margin-top: 20px;
         }
+
+        #deleteButton {
+          float: right;
+        }
+        #editButton {
+          float: right;
+        }
     </style>
 </head>
 
@@ -66,11 +73,11 @@
               <div class="panel-body">
                 <ul id="draggablePanelList" class="list-unstyled">
                   <li class="panel panel-info">
-                    <div class="panel-heading todo-title">  Title Here
+                    <div class="panel-heading todo-title">  Title hardcoded
                       <button type="button" class ="fa fa fa-pencil" id="deleteButton"></button>
                       <button type="button" class ="fa fa-trash-o" id="editButton"></button>
                     </div>
-                    <div class="panel-body todo-description"> Description Here
+                    <div class="panel-body todo-description"> Description hardcoded
                     </div>
                   </li>
                 </ul>
@@ -100,9 +107,11 @@
 
     <script type="text/template" id="todoItemTemplate">
       <li class="panel panel-info">
-        <div class="panel-heading todo-title">  Title Here
+        <div class="panel-heading todo-title">
+          <button type="button" class ="fa fa fa-pencil" id="deleteButton"></button>
+          <button type="button" class ="fa fa-trash-o" id="editButton"></button>
         </div>
-        <div class="panel-body todo-description"> Description Here
+        <div class="panel-body todo-description"> Description here
         </div>
       </li>
     </script>
