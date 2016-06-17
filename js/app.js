@@ -20,7 +20,7 @@ var todoItemTemplateClone = function() {
 }
 var addItemToPage = function(item){
   var newItem = todoItemTemplateClone();
-  newItem.find('.todo-title').html(item.title);
+  newItem.find('.todo-title').prepend(item.title);
   newItem.find('.todo-description').html(item.description);
 
   $('#draggablePanelList').append(newItem);
