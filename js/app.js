@@ -12,7 +12,7 @@ toDoApp.addItem = function(title, description, time, priority){
 toDoApp.newItemTemplateClone = function() {
   return $($('#todoItemTemplate').html()).clone();
 }
-
+//adds items to page
 toDoApp.addItemToPage = function(item){
   var newItem = toDo.newItemTemplateClone();
   newItem.find('.todo-title').prepend(item.title);
@@ -20,10 +20,7 @@ toDoApp.addItemToPage = function(item){
 
   $('#draggablePanelList').append(newItem);
 }
-// Task appending to page
-var toDo = toDoApp;
-
-
+//gets input from user when submit button is clicked
 toDoApp.onSubmitButtonClicked = function(e){
   e.preventDefault();
   var title = $('#title-input').val();
@@ -38,12 +35,8 @@ toDoApp.onSubmitButtonClicked = function(e){
     $("#form")[0].reset();
   }
 }
-
-//creates item on click
-$('#submitButton').on("click", toDoApp.onSubmitButtonClicked);
-
-//show/hide the form on click
-$('#hideButton').on("click", function(e){
+//toggles form when hide button is clicked
+toDoApp.onHideButtonClicked = function(e){
   e.preventDefault();
   $("#formWrapper").toggle();
   if ($("#hideButton").text()==="Hide Form"){
@@ -51,17 +44,27 @@ $('#hideButton').on("click", function(e){
   } else {
     $("#hideButton").text("Hide Form");
   }
-});
+}
 
-var panelList = $('#draggablePanelList, #inProgressPaneList, #completedPaneList');
+toDoApp.panelList = function(){
+  return $('#draggablePanelList, #inProgressPaneList, #completedPaneList');
+}
 
-panelList.sortable({
+// Task appending to page
+var toDo = toDoApp;
+//creates item on click
+$('#submitButton').on("click", toDo.onSubmitButtonClicked);
+
+//show/hide the form on click
+$('#hideButton').on("click", toDo.onHideButtonClicked);
+
+toDo.panelList().sortable({
     // Only make the .panel-heading child elements support dragging.
     // Omit this to make then entire <li>...</li> draggable.
     handle: '.panel-heading',
     connectWith: '.connected-sortable',
     update: function() {
-        $('.panel', panelList).each(function(index, elem) {
+        $('.panel', toDo.panelList).each(function(index, elem) {
             var $listItem = $(elem),
                 newIndex = $listItem.index();
 
