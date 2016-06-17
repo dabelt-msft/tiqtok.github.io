@@ -1,32 +1,62 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>rp30 Trello Hack</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+    <title>week 2.2</title>
   </head>
-  <body>
-    <form>
-      <div>
-        <label for="toDoTitle"></label>
-        <input type="text" id="toDoTitle" title="To Do Name" placeholder="What do you need to do?"><br>
-        <input type="text" id="toDoDescription" title="Description" placeholder="Want to add a description?"><br>
-        <input type="button" id="btnSubmit"  value="Submit">
-      </div>
-      <div class="container">
-          <ul id="toDoList">
-          </ul
-      </div>
-    </form>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+
+
+  <body>
+    <div class="row">
+      <div class="col-lg-12">
+          <div class="">
+              <form>
+                <fieldset class="form-group">
+                  <label for="formGroupExampleInput">Title</label>
+                  <input type="text" class="form-control" id="title-input" placeholder="Example input">
+                </fieldset>
+                <fieldset class="form-group">
+                  <label for="exampleTextarea">Description</label>
+                  <textarea class="form-control" id="description-input" rows="3"></textarea>
+                </fieldset>
+                <fieldset class="form-group">
+                  <label for="formGroupExampleInput">Estimated Hours</label>
+                  <input type="text" class="form-control" id="time-input" placeholder="Example input">
+                </fieldset>
+                <fieldset class="form-group">
+                  <label for="exampleSelect1">Priority</label>
+                  <select class="form-control" id="priority-input">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                </fieldset>
+                <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+              </form>
+            </div>
+        </div>
+    </div>
+    <div>
+          <ul id="toDoList">
+          </ul>
+    </div>
+
     <script src="js/app.js"></script>
     <script type="text/javascript">
       var toDo=toDoApp;
-      $('#btnSubmit').on("click", function(){
-        var title=$('#toDoTitle').val();
-        var description=$('#toDoDescription').val();
+      $('#submitButton').on("click", function(e){
+        e.preventDefault();
+        var title=$('#title-input').val();
+        var description=$('#description-input').val();
         var addedItem=toDo.addItem(title, description);
         $('#toDoList').append("<li>" + addedItem.title + "</li>");
       });
