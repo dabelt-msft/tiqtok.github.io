@@ -61,7 +61,7 @@ panelList.sortable({
     // Only make the .panel-heading child elements support dragging.
     // Omit this to make then entire <li>...</li> draggable.
     handle: '.panel-heading',
-
+    connectWith: '.connected-sortable',
     update: function() {
         $('.panel', panelList).each(function(index, elem) {
             var $listItem = $(elem),
@@ -70,4 +70,4 @@ panelList.sortable({
             // Persist the new indices.
         });
     }
-});
+}).disableSelection();

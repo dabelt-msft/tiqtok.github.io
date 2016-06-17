@@ -31,6 +31,9 @@
           position: relative;
           top: 10px;
         }
+        ul {
+          height: 100px;
+        }
     </style>
 </head>
 
@@ -83,7 +86,7 @@
         <div class="row top-buffer">
             <div class="col-sm-4" id="toDo">
                 <h3 class="panel-title bottom-buffer"> To Do </h3>
-                <ul id="draggablePanelList" class="list-unstyled">
+                <ul id="draggablePanelList" class="list-unstyled connected-sortable">
                   <li class="panel panel-info">
                     <div class="panel-heading todo-title">  Title hardcoded
                       <button type="button" class ="fa fa fa-pencil" id="deleteButton"></button>
@@ -96,12 +99,12 @@
             </div>
             <div class = "col-sm-4 panel"  id="inProgress">
               <h3 class ="panel-title bottom-buffer"> In Progress </h3>
-                <ul id="inProgressPaneList" class="list-unstyled">
+                <ul id="inProgressPaneList" class="list-unstyled connected-sortable">
                 </ul>
             </div>
             <div class = "col-sm-4 panel" id="completed">
                 <h3 class="panel-title bottom-buffer"> Completed </h3>
-                <ul id="completedPaneList" class="list-unstyled">
+                <ul id="completedPaneList" class="list-unstyled connected-sortable">
                 </ul>
             </div>
         </div>
