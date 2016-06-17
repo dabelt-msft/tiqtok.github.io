@@ -26,6 +26,8 @@ var addItemToPage = function(item){
   $('#draggablePanelList').append(newItem);
 }
 
+
+//creates item on click
 $('#submitButton').on("click", function(e) {
     e.preventDefault();
     var title = $('#title-input').val();
@@ -41,6 +43,7 @@ $('#submitButton').on("click", function(e) {
       $("#form")[0].reset();
     }
 });
+
 // should show/hide the form on click
 $('#hideButton').on("click", function(e){
   e.preventDefault();
