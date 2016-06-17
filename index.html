@@ -88,8 +88,30 @@
         </div>
     </div>
     <script src="js/app.js"></script>
+
+    <script type="text/template" id="todoItemTemplate">
+      <li class="panel panel-info">
+        <div class="panel-heading todo-title">  Title Here
+        </div>
+        <div class="panel-body todo-description"> Description Here
+        </div>
+      </li>
+    </script>
+
     <script type="text/javascript">
         var toDo = toDoApp;
+        var todoItemTemplateClone = function() {
+          console.log($($('#todoItemTemplate').html()).clone());
+          return $($('#todoItemTemplate').html()).clone();
+        }
+        var addItemToPage = function(item){
+          var newItem = todoItemTemplateClone();
+          newItem.find('.todo-title').html(item.title);
+          newItem.find('.todo-description').html(item.description);
+
+          $('#draggablePanelList').append(newItem);
+        }
+
         $('#submitButton').on("click", function(e) {
             e.preventDefault();
             var title = $('#title-input').val();
@@ -99,7 +121,8 @@
             var addedItem = toDo.addItem(title, description, time, priority);
             if(title!=""){
               console.log(addedItem.time + addedItem.priority)
-              $('#draggablePanelList').append('<li class="panel panel-info"><div class="panel-heading">' + addedItem.title + '</div><div class="panel-body">' + addedItem.description + '</div></li>')
+              addItemToPage(addedItem);
+              //$('#draggablePanelList').append('<li class="panel panel-info"><div class="panel-heading">' + addedItem.title + '</div><div class="panel-body">' + addedItem.description + '</div></li>')
                   // $('#draggablePanelList').append("<li>" + addedItem.title + addedItem.time + addedItem.priority + "</li>");
               $("#form")[0].reset();
             }
