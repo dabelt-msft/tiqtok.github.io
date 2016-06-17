@@ -1,80 +1,82 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>week 2.2</title>
 
+<head>
+    <title>week 2.2</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="js/jquery-ui.js" type="text/javascript"></script>
     <style type="text/css">
-    /* show the move cursor as the user moves the mouse over the panel header.*/
-    #draggablePanelList .panel-heading {
-      cursor: move;
-    }
+        /* show the move cursor as the user moves the mouse over the panel header.*/
+        #draggablePanelList .panel-heading {
+            cursor: move;
+        }
+
+        .top-buffer {
+            margin-top: 20px;
+        }
     </style>
-  </head>
+</head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-0 col-md-6 col-md-offset-0">
-        <form>
-          <fieldset class="form-group">
-            <label for="formGroupExampleInput">Title</label>
-            <input type="text" class="form-control" id="title-input" placeholder="Example input">
-          </fieldset>
-          <fieldset class="form-group">
-            <label for="exampleTextarea">Description</label>
-            <textarea class="form-control" id="description-input" rows="3"></textarea>
-          </fieldset>
-          <fieldset class="form-group">
-            <label for="formGroupExampleInput">Estimated Hours</label>
-            <input type="text" class="form-control" id="time-input" placeholder="Example input">
-          </fieldset>
-          <fieldset class="form-group">
-            <label for="exampleSelect1">Priority</label>
-            <select class="form-control" id="priority-input">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </select>
-          </fieldset>
-          <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
-        </form>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-0 col-md-6 col-md-offset-0">
+                <form>
+                    <fieldset class="form-group">
+                        <label for="formGroupExampleInput">Title</label>
+                        <input type="text" class="form-control" id="title-input" placeholder="Example input">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="exampleTextarea">Description</label>
+                        <textarea class="form-control" id="description-input" rows="3"></textarea>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="formGroupExampleInput">Estimated Hours</label>
+                        <input type="text" class="form-control" id="time-input" placeholder="Example input">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="exampleSelect1">Priority</label>
+                        <select class="form-control" id="priority-input">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                        </select>
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="col-sm-12">
+                <ul id="draggablePanelList" class="list-unstyled">
+                </ul>
+            </div>
+        </div>
     </div>
-    <div>
-    <!-- Bootstrap 3 panel list. -->
-    <ul id="draggablePanelList" class="list-unstyled">
-    </ul>
-  </div>
-</div>
-
-
     <script src="js/app.js"></script>
     <script type="text/javascript">
-      var toDo=toDoApp;
-      $('#submitButton').on("click", function(e){
-        e.preventDefault();
-        var title = $('#title-input').val();
-        var description = $('#description-input').val();
-        var time = $('#time-input').val();
-        var priority = $('#priority-input').val();
-        var addedItem = toDo.addItem(title, description, time, priority);
-        console.log(addedItem.time + addedItem.priority)
-        $('#draggablePanelList').append('<li class="panel panel-info"><div class="panel-heading">'+addedItem.title+'</div><div class="panel-body">'+addedItem.description+'</div></li>')
-        // $('#draggablePanelList').append("<li>" + addedItem.title + addedItem.time + addedItem.priority + "</li>");
-      });
+        var toDo = toDoApp;
+        $('#submitButton').on("click", function(e) {
+            e.preventDefault();
+            var title = $('#title-input').val();
+            var description = $('#description-input').val();
+            var time = $('#time-input').val();
+            var priority = $('#priority-input').val();
+            var addedItem = toDo.addItem(title, description, time, priority);
+            console.log(addedItem.time + addedItem.priority)
+            $('#draggablePanelList').append('<li class="panel panel-info"><div class="panel-heading">' + addedItem.title + '</div><div class="panel-body">' + addedItem.description + '</div></li>')
+                // $('#draggablePanelList').append("<li>" + addedItem.title + addedItem.time + addedItem.priority + "</li>");
+        });
 
-
-      var panelList = $('#draggablePanelList');
+        var panelList = $('#draggablePanelList');
 
         panelList.sortable({
             // Only make the .panel-heading child elements support dragging.
@@ -82,17 +84,14 @@
             handle: '.panel-heading',
             update: function() {
                 $('.panel', panelList).each(function(index, elem) {
-                     var $listItem = $(elem),
-                         newIndex = $listItem.index();
+                    var $listItem = $(elem),
+                        newIndex = $listItem.index();
 
-                     // Persist the new indices.
+                    // Persist the new indices.
                 });
             }
         });
-
-
     </script>
-
-
 </body>
+
 </html>
