@@ -53,12 +53,13 @@ $('#hideButton').on("click", function(e){
   }
 });
 
-var panelList = $('#draggablePanelList');
+var panelList = $('#draggablePanelList, #inProgressPaneList, #completedPaneList');
 
 panelList.sortable({
     // Only make the .panel-heading child elements support dragging.
     // Omit this to make then entire <li>...</li> draggable.
     handle: '.panel-heading',
+
     update: function() {
         $('.panel', panelList).each(function(index, elem) {
             var $listItem = $(elem),
