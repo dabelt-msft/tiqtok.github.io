@@ -1,3 +1,4 @@
+//Item creation
 var toDoApp={};
 toDoApp.toDoItems=[];
 toDoApp.addItem = function(title, description, time, priority)
@@ -11,6 +12,7 @@ toDoApp.addItem = function(title, description, time, priority)
 
 }
 
+// Task appending to page
 var toDo = toDoApp;
 var todoItemTemplateClone = function() {
   // console.log($($('#todoItemTemplate').html()).clone());
