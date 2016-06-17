@@ -34,8 +34,9 @@ $('#submitButton').on("click", function(e) {
     var description = $('#description-input').val();
     var time = $('#time-input').val();
     var priority = $('#priority-input').val();
+    var addedItem = toDo.addItem(title, description, time, priority);
     if(title!=""){
-      var addedItem = toDo.addItem(title, description, time, priority);
+      console.log(addedItem.time + addedItem.priority)
       addItemToPage(addedItem);
       //$('#draggablePanelList').append('<li class="panel panel-info"><div class="panel-heading">' + addedItem.title + '</div><div class="panel-body">' + addedItem.description + '</div></li>')
           // $('#draggablePanelList').append("<li>" + addedItem.title + addedItem.time + addedItem.priority + "</li>");
@@ -54,12 +55,13 @@ $('#hideButton').on("click", function(e){
   }
 });
 
-var panelList = $('#draggablePanelList');
+var panelList = $('#draggablePanelList, #inProgressPaneList, #completedPaneList');
 
 panelList.sortable({
     // Only make the .panel-heading child elements support dragging.
     // Omit this to make then entire <li>...</li> draggable.
     handle: '.panel-heading',
+
     update: function() {
         $('.panel', panelList).each(function(index, elem) {
             var $listItem = $(elem),

@@ -15,7 +15,10 @@
         }
 
         .top-buffer {
-            margin-top: 20px;
+          margin-top: 20px;
+        }
+        .bottom-buffer {
+          margin-bottom: 20px;
         }
         #deleteButton {
           float: right;
@@ -34,7 +37,7 @@
 <body>
     <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-0 col-md-6 col-md-offset-0">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-0">
           <button type="submit" class ="btn btn-primary" id="hideButton">Hide Form</button>
         </div>
 
@@ -43,7 +46,7 @@
         <div class="row">
 
           <div id ="formWrapper">
-            <div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-0 col-md-6 col-md-offset-0">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-0">
 
                 <form id="form">
                     <fieldset class="form-group">
@@ -79,10 +82,7 @@
         </div>
         <div class="row top-buffer">
             <div class="col-sm-4" id="toDo">
-              <div class="panel-heading">
-                <h3 class="panel-title"> To Do </h3>
-              </div>
-              <div class="panel-body">
+                <h3 class="panel-title bottom-buffer"> To Do </h3>
                 <ul id="draggablePanelList" class="list-unstyled">
                   <li class="panel panel-info">
                     <div class="panel-heading todo-title">  Title hardcoded
@@ -93,25 +93,16 @@
                     </div>
                   </li>
                 </ul>
-              </div>
             </div>
             <div class = "col-sm-4 panel"  id="inProgress">
-              <div class = "panel-heading">
-                <h3 class ="panel-title"> In Progress </h3>
-              </div>
-              <div class="panel-body">
+              <h3 class ="panel-title bottom-buffer"> In Progress </h3>
                 <ul id="inProgressPaneList" class="list-unstyled">
                 </ul>
-              </div>
             </div>
             <div class = "col-sm-4 panel" id="completed">
-              <div class="panel-heading">
-                <h3 class="panel-title"> Completed </h3>
-              </div>
-              <div class="panel-body">
+                <h3 class="panel-title bottom-buffer"> Completed </h3>
                 <ul id="completedPaneList" class="list-unstyled">
                 </ul>
-              </div>
             </div>
         </div>
     </div>
