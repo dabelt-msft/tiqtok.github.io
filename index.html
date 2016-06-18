@@ -20,13 +20,13 @@
         .bottom-buffer {
           margin-bottom: 20px;
         }
-        #deleteButton {
+        .delete-button {
           float: right;
         }
-        #editButton {
+        .edit-button {
           float: right;
         }
-        button#hideButton {
+        #hideButton {
           float: right;
           position: relative;
           top: 10px;
@@ -41,14 +41,14 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-0">
-          <button type="submit" class ="btn btn-primary" id="hideButton">Hide Form</button>
+          <button type="submit" class ="btn btn-primary" id="hide-button">Hide Form</button>
         </div>
 
       </div>
 
         <div class="row">
 
-          <div id ="formWrapper">
+          <div id ="form-wrapper">
             <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-0">
 
                 <form id="form">
@@ -86,7 +86,7 @@
         <div class="row top-buffer">
             <div class="col-sm-4" id="toDo">
                 <h3 class="panel-title bottom-buffer"> To Do </h3>
-                <ul id="draggablePanelList" class="list-unstyled connected-sortable">
+                <ul id="pending-panel-list" class="list-unstyled connected-sortable">
                   <li class="panel panel-info">
                     <div class="panel-heading todo-title">  Title hardcoded
                       <button type="button" class ="fa fa-trash-o delete-button"></button>
@@ -99,12 +99,12 @@
             </div>
             <div class = "col-sm-4 panel"  id="inProgress">
               <h3 class ="panel-title bottom-buffer"> In Progress </h3>
-                <ul id="inProgressPaneList" class="list-unstyled connected-sortable">
+                <ul id="in-progress-panel-list" class="list-unstyled connected-sortable">
                 </ul>
             </div>
             <div class = "col-sm-4 panel" id="completed">
                 <h3 class="panel-title bottom-buffer"> Completed </h3>
-                <ul id="completedPaneList" class="list-unstyled connected-sortable">
+                <ul id="completed-panel-list" class="list-unstyled connected-sortable">
                 </ul>
             </div>
         </div>
@@ -114,8 +114,8 @@
     <script type="text/template" id="todoItemTemplate">
       <li class="panel panel-info">
         <div class="panel-heading todo-title">
-          <button type="button" class ="fa fa-trash-o" id="deleteButton"></button>
-          <button type="button" class ="fa fa fa-pencil" id="editButton"></button>
+          <button type="button" class ="fa fa-trash-o delete-button"></button>
+          <button type="button" class ="fa fa fa-pencil edit-button"></button>
         </div>
         <div class="panel-body todo-description"> Description here
         </div>

@@ -32,9 +32,9 @@ toDoApp.onSubmitButtonClicked = function(e){
     toDo.addItemToPage(addedItem);
     $("#form")[0].reset();
   }
-  $('.deleteButton').on('click', function(){
-    // $(this).remove()
-    console.log("works")
+  $('.delete-button').on('click', function(){
+    console.log($(this).parent('div'))
+    $(this).closest('li').remove()
   });
 }
 //toggles form when hide button is clicked
