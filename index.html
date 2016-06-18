@@ -24,7 +24,7 @@
         <div class="row">
           <div id ="formWrapper">
             <div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-0 col-md-6 col-md-offset-0">
-                <form>
+                <form id="form">
                     <fieldset class="form-group">
                         <label for="formGroupExampleInput">Title</label>
                         <input type="text" class="form-control" id="title-input" placeholder="Example input">
@@ -51,8 +51,8 @@
                             <option>10</option>
                         </select>
                     </fieldset>
-                    <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
                 </form>
+                <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
             </div>
           </div>
           <button type="submit" class ="btn btn-primary" id="hideButton">Hide Form</button>
@@ -97,9 +97,12 @@
             var time = $('#time-input').val();
             var priority = $('#priority-input').val();
             var addedItem = toDo.addItem(title, description, time, priority);
-            console.log(addedItem.time + addedItem.priority)
-            $('#draggablePanelList').append('<li class="panel panel-info"><div class="panel-heading">' + addedItem.title + '</div><div class="panel-body">' + addedItem.description + '</div></li>')
-                // $('#draggablePanelList').append("<li>" + addedItem.title + addedItem.time + addedItem.priority + "</li>");
+            if(title!=""){
+              console.log(addedItem.time + addedItem.priority)
+              $('#draggablePanelList').append('<li class="panel panel-info"><div class="panel-heading">' + addedItem.title + '</div><div class="panel-body">' + addedItem.description + '</div></li>')
+                  // $('#draggablePanelList').append("<li>" + addedItem.title + addedItem.time + addedItem.priority + "</li>");
+              $("#form")[0].reset();
+            }
         });
         // should show/hide the form on click
         $('#hideButton').on("click", function(e){
