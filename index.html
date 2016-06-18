@@ -22,6 +22,7 @@
 <body>
     <div class="container">
         <div class="row">
+          <div id ="formWrapper">
             <div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-0 col-md-6 col-md-offset-0">
                 <form>
                     <fieldset class="form-group">
@@ -53,6 +54,8 @@
                     <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
                 </form>
             </div>
+          </div>
+          <button type="submit" class ="btn btn-primary" id="hideButton">Hide Form</button>
         </div>
         <div class="row top-buffer">
             <div class="col-sm-12">
@@ -74,6 +77,11 @@
             console.log(addedItem.time + addedItem.priority)
             $('#draggablePanelList').append('<li class="panel panel-info"><div class="panel-heading">' + addedItem.title + '</div><div class="panel-body">' + addedItem.description + '</div></li>')
                 // $('#draggablePanelList').append("<li>" + addedItem.title + addedItem.time + addedItem.priority + "</li>");
+        });
+        // should show/hide the form on click
+        $('#hideButton').on("click", function(e){
+          e.preventDefault();
+          $("#formWrapper").toggle();
         });
 
         var panelList = $('#draggablePanelList');
