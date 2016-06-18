@@ -1,0 +1,24 @@
+#draggablePanelList .panel-heading {
+    cursor: move;
+}
+
+.top-buffer {
+  margin-top: 20px;
+}
+.bottom-buffer {
+  margin-bottom: 20px;
+}
+.delete-button {
+  float: right;
+}
+.edit-button {
+  float: right;
+}
+#hide-button {
+  float: right;
+  position: relative;
+  top: 10px;
+}
+ul {
+  min-height: 100px;
+}

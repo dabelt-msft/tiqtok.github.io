@@ -10,7 +10,7 @@ toDoApp.addItem = function(title, description, time, priority){
 }
 //clones the new Item Template
 toDoApp.newItemTemplateClone = function() {
-  return $($('#todoItemTemplate').html()).clone();
+  return $($('#todo-item-template').html()).clone();
 }
 //adds items to page
 toDoApp.addItemToPage = function(item){
@@ -55,10 +55,10 @@ toDoApp.panelList = function(){
 // Task appending to page
 var toDo = toDoApp;
 //creates item on click
-$('#submitButton').on("click", toDo.onSubmitButtonClicked);
+$('#submit-button').on("click", toDo.onSubmitButtonClicked);
 
 //show/hide the form on click
-$('#hideButton').on("click", toDo.onHideButtonClicked);
+$('#hide-button').on("click", toDo.onHideButtonClicked);
 
 toDo.panelList().sortable({
     handle: '.panel-heading',

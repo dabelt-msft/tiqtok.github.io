@@ -4,68 +4,37 @@
 <head>
     <title>To Do</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/todo.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/f511a3595c.js"></script>
     <script src="js/jquery-ui.js" type="text/javascript"></script>
-    <style type="text/css">
-        /* show the move cursor as the user moves the mouse over the panel header.*/
-        #draggablePanelList .panel-heading {
-            cursor: move;
-        }
-
-        .top-buffer {
-          margin-top: 20px;
-        }
-        .bottom-buffer {
-          margin-bottom: 20px;
-        }
-        .delete-button {
-          float: right;
-        }
-        .edit-button {
-          float: right;
-        }
-        #hide-button {
-          float: right;
-          position: relative;
-          top: 10px;
-        }
-        ul {
-          min-height: 100px;
-        }
-    </style>
 </head>
-
 <body>
     <div class="container">
       <div class="row">
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-0">
-          <button type="submit" class ="btn btn-primary" id="hide-button">Hide Form</button>
+          <button type="button" class ="btn btn-primary" id="hide-button">Hide Form</button>
         </div>
-
       </div>
-
         <div class="row">
-
           <div id ="form-wrapper">
             <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-0">
-
                 <form id="form">
                     <fieldset class="form-group">
-                        <label for="formGroupExampleInput">Title</label>
-                        <input type="text" class="form-control" id="title-input" placeholder="Example input">
+                        <label for="title-input" >Title</label>
+                        <input type="text" class="form-control" id="title-input">
                     </fieldset>
                     <fieldset class="form-group">
-                        <label for="exampleTextarea">Description</label>
+                        <label for="description-input">Description</label>
                         <textarea class="form-control" id="description-input" rows="3"></textarea>
                     </fieldset>
                     <fieldset class="form-group">
-                        <label for="formGroupExampleInput">Estimated Hours</label>
-                        <input type="text" class="form-control" id="time-input" placeholder="Example input">
+                        <label for="time-input">Estimated Hours</label>
+                        <input type="text" class="form-control" id="time-input">
                     </fieldset>
                     <fieldset class="form-group">
-                        <label for="exampleSelect1">Priority</label>
+                        <label for="priority-input">Priority</label>
                         <select class="form-control" id="priority-input">
                             <option>1</option>
                             <option>2</option>
@@ -79,7 +48,7 @@
                         </select>
                     </fieldset>
                 </form>
-                <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+                <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
             </div>
           </div>
         </div>
@@ -87,14 +56,6 @@
             <div class="col-sm-4" id="toDo">
                 <h3 class="panel-title bottom-buffer"> To Do </h3>
                 <ul id="pending-panel-list" class="list-unstyled connected-sortable">
-                  <li class="panel panel-info">
-                    <div class="panel-heading todo-title">  Title hardcoded
-                      <button type="button" class ="fa fa-trash-o delete-button"></button>
-                      <button type="button" class ="fa fa fa-pencil edit-button"></button>
-                    </div>
-                    <div class="panel-body todo-description"> Description hardcoded
-                    </div>
-                  </li>
                 </ul>
             </div>
             <div class = "col-sm-4 panel"  id="inProgress">
@@ -111,7 +72,7 @@
     </div>
     <script src="js/app.js"></script>
 
-    <script type="text/template" id="todoItemTemplate">
+    <script type="text/template" id="todo-item-template">
       <li class="panel panel-info">
         <div class="panel-heading todo-title">
           <button type="button" class ="fa fa-trash-o delete-button"></button>
