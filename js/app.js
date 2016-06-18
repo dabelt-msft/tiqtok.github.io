@@ -33,7 +33,6 @@ toDoApp.onSubmitButtonClicked = function(e){
     $("#form")[0].reset();
   }
   $('.delete-button').on('click', function(){
-    console.log($(this).parent('div'))
     $(this).closest('li').remove()
   });
 }
@@ -72,9 +71,3 @@ toDo.panelList().sortable({
         });
     }
 }).disableSelection();
-
-toDoApp.onDeleteButtonClicked = function(e){
-  e.preventDefault();
-  console.log("clicked delete")
-}
-$('#deleteButton').on("click",toDo.onDeleteButtonClicked);
