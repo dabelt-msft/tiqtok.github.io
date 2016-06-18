@@ -15,10 +15,11 @@
   float: right;
 }
 #hide-button {
-  float: right;
-  position: relative;
-  top: 10px;
+    margin-right: 1em;
 }
 ul {
   min-height: 100px;
+}
+#show-button{
+    display: none;
 }

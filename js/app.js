@@ -31,7 +31,9 @@ toDoApp.onSubmitButtonClicked = function(e){
     var addedItem = toDo.addItem(title, description, time, priority);
     toDo.addItemToPage(addedItem);
     $("#form")[0].reset();
-  }
+  } else{
+        alert("Please enter a title")
+    }
   $('.delete-button').on('click', function(){
     $(this).closest('li').remove()
   });
@@ -39,12 +41,14 @@ toDoApp.onSubmitButtonClicked = function(e){
 //toggles form when hide button is clicked
 toDoApp.onHideButtonClicked = function(e){
   e.preventDefault();
-  $("#form-wrapper").toggle();
-  if ($("#hide-button").text()==="Hide Form"){
-    $("#hide-button").text("Show Form");
-  } else {
-    $("#hide-button").text("Hide Form");
-  }
+    $("#form-wrapper").hide();
+    $("#show-button").show();
+}
+
+toDoApp.onShowButtonClicked = function(e){
+    e.preventDefault();
+    $("#form-wrapper").show();
+    $("#show-button").hide();
 }
 
 toDoApp.panelList = function(){
@@ -59,6 +63,9 @@ $('#submit-button').on("click", toDo.onSubmitButtonClicked);
 //show/hide the form on click
 $('#hide-button').on("click", toDo.onHideButtonClicked);
 
+//show/hide the form on click
+$('#show-button').on("click", toDo.onShowButtonClicked);
+
 toDo.panelList().sortable({
     handle: '.panel-heading',
     connectWith: '.connected-sortable',
@@ -71,3 +78,5 @@ toDo.panelList().sortable({
         });
     }
 }).disableSelection();
+
+
