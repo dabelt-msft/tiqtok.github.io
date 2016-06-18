@@ -72,3 +72,9 @@ toDo.panelList().sortable({
         });
     }
 }).disableSelection();
+
+toDoApp.onDeleteButtonClicked = function(e){
+  e.preventDefault();
+  console.log("clicked delete")
+}
+$('#deleteButton').on("click",toDo.onDeleteButtonClicked);
