@@ -18,7 +18,7 @@ toDoApp.addItemToPage = function(item){
   newItem.find('.todo-title').prepend(item.title);
   newItem.find('.todo-description').html(item.description);
 
-  $('#draggablePanelList').append(newItem);
+  $('#pending-panel-list').append(newItem);
 }
 //gets input from user when submit button is clicked
 toDoApp.onSubmitButtonClicked = function(e){
@@ -40,16 +40,16 @@ toDoApp.onSubmitButtonClicked = function(e){
 //toggles form when hide button is clicked
 toDoApp.onHideButtonClicked = function(e){
   e.preventDefault();
-  $("#formWrapper").toggle();
-  if ($("#hideButton").text()==="Hide Form"){
-    $("#hideButton").text("Show Form");
+  $("#form-wrapper").toggle();
+  if ($("#hide-button").text()==="Hide Form"){
+    $("#hide-button").text("Show Form");
   } else {
-    $("#hideButton").text("Hide Form");
+    $("#hide-button").text("Hide Form");
   }
 }
 
 toDoApp.panelList = function(){
-  return $('#draggablePanelList, #inProgressPaneList, #completedPaneList');
+  return $('#pending-panel-list, #in-progress-panel-list, #completed-panel-list');
 }
 
 // Task appending to page
