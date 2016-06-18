@@ -30,10 +30,12 @@ toDoApp.onSubmitButtonClicked = function(e){
   if(title!=""){
     var addedItem = toDo.addItem(title, description, time, priority);
     toDo.addItemToPage(addedItem);
-    //$('#draggablePanelList').append('<li class="panel panel-info"><div class="panel-heading">' + addedItem.title + '</div><div class="panel-body">' + addedItem.description + '</div></li>')
-        // $('#draggablePanelList').append("<li>" + addedItem.title + addedItem.time + addedItem.priority + "</li>");
     $("#form")[0].reset();
   }
+  $('.deleteButton').on('click', function(){
+    // $(this).remove()
+    console.log("works")
+  });
 }
 //toggles form when hide button is clicked
 toDoApp.onHideButtonClicked = function(e){
@@ -59,8 +61,6 @@ $('#submitButton').on("click", toDo.onSubmitButtonClicked);
 $('#hideButton').on("click", toDo.onHideButtonClicked);
 
 toDo.panelList().sortable({
-    // Only make the .panel-heading child elements support dragging.
-    // Omit this to make then entire <li>...</li> draggable.
     handle: '.panel-heading',
     connectWith: '.connected-sortable',
     update: function() {
