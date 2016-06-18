@@ -82,6 +82,11 @@
         $('#hideButton').on("click", function(e){
           e.preventDefault();
           $("#formWrapper").toggle();
+          if ($("#hideButton").text()==="Hide Form"){
+            $("#hideButton").text("Show Form");
+          } else {
+            $("#hideButton").text("Hide Form");
+          }
         });
 
         var panelList = $('#draggablePanelList');
