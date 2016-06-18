@@ -11,7 +11,6 @@ toDoApp.addItem = function(title, description, time, priority){
 //clones the new Item Template
 toDoApp.newItemTemplateClone = function() {
   return $($('#todo-item-template').html()).clone();
-
 }
 //adds items to page
 toDoApp.addItemToPage = function(item){
