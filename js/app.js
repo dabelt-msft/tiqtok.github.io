@@ -1,4 +1,3 @@
-'use strict'
 //Item creation
 var toDoApp={};
 toDoApp.toDoItems=[];
@@ -18,10 +17,6 @@ toDoApp.addItemToPage = function(item){
   var newItem = toDo.newItemTemplateClone();
   newItem.find('.todo-title').prepend(item.title);
   newItem.find('.todo-description').html(item.description);
-  newItem.attr("id", "task-" + item.id);
-
-  // newItem.find('#to-do-').
-  // $(this).closest('li').prop('#to-do-' + item.id)
 
   $('#pending-panel-list').append(newItem);
 }
@@ -37,20 +32,10 @@ toDoApp.onSubmitButtonClicked = function(e){
     toDo.addItemToPage(addedItem);
     $("#form")[0].reset();
   } else{
-        alert("Please enter a title")
+        toastr.warning('Please enter a title', {timeOut: 2000});
     }
   $('.delete-button').on('click', function(){
-    var index = addedItem.id - 1;
-    // var $id = $(this).closest('li').attr('id')
-    toDoApp.toDoItems.splice(index, 1);
-
-
-
-    // console.log(toDoApp.toDoItems[$id])
-    // console.log(addedItem.id)
-    $(this).closest('li').remove();
-    console.log(toDoApp.toDoItems)
-
+    $(this).closest('li').remove()
   });
 }
 //toggles form when hide button is clicked
@@ -107,9 +92,5 @@ toDo.panelList().sortable({
         });
     }
 }).disableSelection();
-<<<<<<< HEAD
-
 
 $('#add-item-button').on("click", todo.onAddItemClicked);
-=======
->>>>>>> d91f2f92c39ace2705f74ddc336726df012391d6
