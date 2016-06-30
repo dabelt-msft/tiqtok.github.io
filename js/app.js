@@ -107,9 +107,5 @@ toDo.panelList().sortable({
         });
     }
 }).disableSelection();
-<<<<<<< HEAD
 
-
-$('#add-item-button').on("click", todo.onAddItemClicked);
-=======
->>>>>>> d91f2f92c39ace2705f74ddc336726df012391d6
+$('#add-item-button').on("click", toDo.onAddItemClicked);
