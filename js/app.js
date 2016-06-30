@@ -93,4 +93,4 @@ toDo.panelList().sortable({
     }
 }).disableSelection();
 
-$('#add-item-button').on("click", todo.onAddItemClicked);
+$('#add-item-button').on("click", toDo.onAddItemClicked);
