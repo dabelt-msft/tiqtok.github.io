@@ -3,7 +3,7 @@ var toDoApp={};
 toDoApp.toDoItems=[];
 //sticks items into array
 toDoApp.addItem = function(title, description, time, priority){
-    var id = this.toDoItems.length + 1;
+    var id = new Date().getTime();
     this.toDoItems.push({"id": id, "title": title, "description": description, "time": time, "priority": priority});
     console.log(this.toDoItems)
   return this.toDoItems[this.toDoItems.length-1];
@@ -36,6 +36,12 @@ toDoApp.onSubmitButtonClicked = function(e){
     }
   $('.delete-button').on('click', function(){
     $(this).closest('li').remove()
+  });
+  $('.edit-button').on('click', function(){
+    $("#title-input").val('something');
+    $("#description-input").val("something");
+    $("#time-input").val("something");
+    $("#priority-input").val(3);
   });
 }
 //toggles form when hide button is clicked
