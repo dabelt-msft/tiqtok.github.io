@@ -1,3 +1,4 @@
+'use strict'
 //Item creation
 var toDoApp={};
 toDoApp.toDoItems=[];
@@ -17,6 +18,10 @@ toDoApp.addItemToPage = function(item){
   var newItem = toDo.newItemTemplateClone();
   newItem.find('.todo-title').prepend(item.title);
   newItem.find('.todo-description').html(item.description);
+  newItem.attr("id", "task-" + item.id);
+
+  // newItem.find('#to-do-').
+  // $(this).closest('li').prop('#to-do-' + item.id)
 
   $('#pending-panel-list').append(newItem);
 }
@@ -35,7 +40,17 @@ toDoApp.onSubmitButtonClicked = function(e){
         alert("Please enter a title")
     }
   $('.delete-button').on('click', function(){
-    $(this).closest('li').remove()
+    var index = addedItem.id - 1;
+    // var $id = $(this).closest('li').attr('id')
+    toDoApp.toDoItems.splice(index, 1);
+
+
+
+    // console.log(toDoApp.toDoItems[$id])
+    // console.log(addedItem.id)
+    $(this).closest('li').remove();
+    console.log(toDoApp.toDoItems)
+
   });
 }
 //toggles form when hide button is clicked
@@ -55,6 +70,18 @@ toDoApp.panelList = function(){
   return $('#pending-panel-list, #in-progress-panel-list, #completed-panel-list');
 }
 
+toDoApp.onAddItemClicked = function(){
+  $('#todoModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('whatever') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-title').text('Add a an item here Mr ' + recipient)
+    //modal.find('.modal-body input').val(recipient)
+  });
+}
+
 // Task appending to page
 var toDo = toDoApp;
 //creates item on click
@@ -65,6 +92,8 @@ $('#hide-button').on("click", toDo.onHideButtonClicked);
 
 //show/hide the form on click
 $('#show-button').on("click", toDo.onShowButtonClicked);
+
+//$('#add-item-button').on("click", todo.onAddItemClicked);
 
 toDo.panelList().sortable({
     handle: '.panel-heading',
@@ -79,4 +108,4 @@ toDo.panelList().sortable({
     }
 }).disableSelection();
 
-
+$('#add-item-button').on("click", toDo.onAddItemClicked);
