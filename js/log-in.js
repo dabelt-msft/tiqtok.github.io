@@ -3,11 +3,12 @@
 var user = {};
 user.id={};
 
-user.logIn= function(){
+user.logIn= function(e){
   var email = $("#email").val();
   var password = $("#password").val();
   user.id["email"]=email;
   user.id["password"]=password;
+  $("#form")[0].reset();
 }
 
-$("#log-in-button").on("click",logIn());
+$("#log-in-button").on("click", user.logIn());
