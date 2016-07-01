@@ -2,7 +2,7 @@
 
 var user = {};
 user.id={};
-
+//method for adding user.id
 user.logIn= function(e){
   e.preventDefault();
   if($("#form").valid()){
@@ -13,9 +13,10 @@ user.logIn= function(e){
     $("#form")[0].reset();
   }
 }
-
+//event listener
 $("#log-in-button").on("click", user.logIn);
 
+//form validation
 $().ready(()=>{
     $("#form").validate({
       rules: {
