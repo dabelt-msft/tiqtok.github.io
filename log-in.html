@@ -7,19 +7,21 @@
     <link rel="stylesheet" type="text/css" href="css/todo.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.js"></script>
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
 <body>
     <div class="container">
         <div class="row">
           <div id ="form-wrapper">
             <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-0">
-                <form id="form">
+                <form id="form" method="get">
                     <fieldset class="form-group">
                         <label for="email" >Email</label>
-                        <input type="email" class="form-control" id="email">
+                        <input type="email" class="form-control" id="email" name="email" ></input>
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class = "form-control" id="password"></input>
+                        <input type="password" class="form-control" id="password" name="password"></input>
                     </fieldset>
                 </form>
                 <div  style="float:left">
