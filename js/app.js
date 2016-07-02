@@ -72,6 +72,8 @@ toDoApp.onAddItemClicked = function(){
 toDoApp.clearCloseButton = function(){
       console.log("form cleared");
       $("#form")[0].reset();
+  //resets original submit functionality if closed from edit
+  $('#submit-button').on("click", toDo.onSubmitButtonClicked);
 }
 
 //method for deleting Task
@@ -100,17 +102,23 @@ toDoApp.edit = function(){
   $("#description-input").val(thisTask.description);
   $("#time-input").val(thisTask.time);
   $("#priority-input").val(thisTask.priority);
-   //applies changes to Task
+
+  //turns off original submit handler
+  $("#submit-button").off("click",toDo.onSubmitButtonClicked)
+
+   //adds new handler and applies changes to Task
   $("#submit-button").on("click", (e)=>{
     //changes object
     e.preventDefault();
-    thisTask.title = $("input[title-input]").val();
+    thisTask.title = $("#title-input").val();
     thisTask.description = $("#description-input").val();
     thisTask.time = $("#time-input").val();
     thisTask.priority = $("#priority-input").val();
     //changes html element
     $("#title-"+id).attr('text',thisTask.title);
     $("#description-"+id).html(thisTask.description);
+    //turns old eevnt handler back on
+    $('#submit-button').on("click", toDo.onSubmitButtonClicked);
   })
 }
 // Task appending to page
