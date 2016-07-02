@@ -17,6 +17,7 @@ toDoApp.addItemToPage = function(item){
   var newItem = toDo.newItemTemplateClone();
   newItem.find('.todo-title').prepend(item.title);
   newItem.find('.todo-description').html(item.description);
+  newItem.find('.edit-button').attr('id',item.id);
 
   $('#pending-panel-list').append(newItem);
 }
@@ -34,15 +35,7 @@ toDoApp.onSubmitButtonClicked = function(e){
   } else{
         toastr.warning('Please enter a title', {timeOut: 2000});
     }
-  $('.delete-button').on('click', function(){
-    $(this).closest('li').remove()
-  });
-  $('.edit-button').on('click', function(){
-    $("#title-input").val('something');
-    $("#description-input").val("something");
-    $("#time-input").val("something");
-    $("#priority-input").val(3);
-  });
+    //adds functionality for edit and delete button
 }
 //toggles form when hide button is clicked
 toDoApp.onHideButtonClicked = function(e){
@@ -73,6 +66,32 @@ toDoApp.onAddItemClicked = function(){
   });
 }
 
+//method for clearing close button
+toDoApp.clearCloseButton = function(){
+      console.log("form cleared");
+      $("#form")[0].reset();
+}
+
+//method for deleting Task
+toDoApp.delete = function(){
+  $(this).closest('li').remove()
+}
+
+//method for editing tasks
+toDoApp.edit = function(){
+  var id = $(this).attr('id');
+  var thisTask;
+  toDoApp.toDoItems.forEach(function(item){
+    if (item.id == id){
+      thisTask = item;
+    }
+  });
+
+  $("#title-input").val(thisTask.title);
+  $("#description-input").val(thisTask.description);
+  $("#time-input").val(thisTask.time);
+  $("#priority-input").val(thisTask.priority);
+}
 // Task appending to page
 var toDo = toDoApp;
 //creates item on click
@@ -84,7 +103,10 @@ $('#hide-button').on("click", toDo.onHideButtonClicked);
 //show/hide the form on click
 $('#show-button').on("click", toDo.onShowButtonClicked);
 
-//$('#add-item-button').on("click", todo.onAddItemClicked);
+//event listener for close button
+$("#close-button").on("click", toDo.clearCloseButton)
+
+
 
 toDo.panelList().sortable({
     handle: '.panel-heading',
@@ -100,3 +122,7 @@ toDo.panelList().sortable({
 }).disableSelection();
 
 $('#add-item-button').on("click", toDo.onAddItemClicked);
+
+//adds edit and delete event listeners
+$('.top-buffer').on('click', '.delete-button', toDo.delete);
+$('.top-buffer').on('click','.edit-button', toDo.edit);
