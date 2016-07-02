@@ -18,7 +18,8 @@
 
       <script type="text/template" id="todo-item-template">
         <li class="panel panel-info" id="todo-item">
-          <div class="panel-heading todo-title">
+          <div class="panel-heading">
+            <div class ="panel-heading  todo-title"></div>
             <button type="button" class ="fa fa-trash-o delete-button"></button>
             <button type="button" class ="fa fa fa-pencil edit-button" data-toggle="modal" data-target="#todoModal" data-whatever="user name"></button>
           </div>
@@ -34,7 +35,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="form-x"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="todoModalLabel">New message</h4>
               </div>
               <div class="modal-body">

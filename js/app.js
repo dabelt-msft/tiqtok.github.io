@@ -18,7 +18,7 @@ toDoApp.addItemToPage = function(item){
   newItem.find('.todo-title').prepend(item.title);
   newItem.find('.todo-title').attr('id','title-'+item.id);
   newItem.find('.todo-description').html(item.description);
-  newItem.find('.todo-description').attr('id','description-'+ item.description);
+  newItem.find('.todo-description').attr('id','description-'+ item.id);
   newItem.find('.edit-button').attr('id',item.id);
 
   $('#pending-panel-list').append(newItem);
@@ -88,6 +88,14 @@ toDoApp.delete = function(){
   }), 1);
 }
 
+//method for editing toDoItems
+toDoApp.editObj = function(obj,title,description,time,priority){
+  obj.title = title;
+  obj.description = description;
+  obj.time = time;
+  obj.priority = priority;
+}
+
 //method for editing tasks
 toDoApp.edit = function(){
   var id = $(this).attr('id');
@@ -102,22 +110,24 @@ toDoApp.edit = function(){
   $("#description-input").val(thisTask.description);
   $("#time-input").val(thisTask.time);
   $("#priority-input").val(thisTask.priority);
-
   //turns off original submit handler
   $("#submit-button").off("click",toDo.onSubmitButtonClicked)
-
-   //adds new handler and applies changes to Task
+   //adds new handler that applies changes to Task
   $("#submit-button").on("click", (e)=>{
-    //changes object
     e.preventDefault();
-    thisTask.title = $("#title-input").val();
-    thisTask.description = $("#description-input").val();
-    thisTask.time = $("#time-input").val();
-    thisTask.priority = $("#priority-input").val();
+    var title = $("#title-input").val();
+    var description = $("#description-input").val();
+    var time = $("#time-input").val();
+    var priority = $("#priority-input").val();
+    //changes object
+    toDoApp.editObj(thisTask,title,description,time,priority);
     //changes html element
-    $("#title-"+id).attr('text',thisTask.title);
+    console.log ("title-"+id);
+    $("#title-"+id).text(thisTask.title);
     $("#description-"+id).html(thisTask.description);
-    //turns old eevnt handler back on
+    //clears form
+    $("#form")[0].reset();
+    //turns old event handler back on
     $('#submit-button').on("click", toDo.onSubmitButtonClicked);
   })
 }
@@ -133,7 +143,10 @@ $('#hide-button').on("click", toDo.onHideButtonClicked);
 $('#show-button').on("click", toDo.onShowButtonClicked);
 
 //event listener for close button
-$("#close-button").on("click", toDo.clearCloseButton)
+$("#close-button").on("click", toDo.clearCloseButton);
+
+//event listener for form x button
+$("#form-x").on("click",toDo.clearCloseButton);
 
 
 
