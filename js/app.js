@@ -120,14 +120,14 @@ toDoApp.edit = function(){
     var time = $("#time-input").val();
     var priority = $("#priority-input").val();
     //changes object
-    toDoApp.editObj(thisTask,title,description,time,priority);
-    //changes html element
-    console.log ("title-"+id);
+    toDo.editObj(thisTask,title,description,time,priority);
+    //changes html element;
     $("#title-"+id).text(thisTask.title);
     $("#description-"+id).html(thisTask.description);
     //clears form
     $("#form")[0].reset();
-    //turns old event handler back on
+    //switches event handlers
+    $("#submit-button").off("click");
     $('#submit-button').on("click", toDo.onSubmitButtonClicked);
   })
 }
