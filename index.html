@@ -19,9 +19,11 @@
       <script type="text/template" id="todo-item-template">
         <li class="panel panel-info" id="todo-item">
           <div class="panel-heading">
-            <div class ="panel-heading  todo-title"></div>
-            <button type="button" class ="fa fa-trash-o delete-button"></button>
-            <button type="button" class ="fa fa fa-pencil edit-button" data-toggle="modal" data-target="#todoModal" data-whatever="user name"></button>
+            <div class="todo-title"></div>
+            <div class="buttons-container">
+              <button type="button" class="fa fa-trash-o delete-button"></button>
+              <button type="button" class="fa fa fa-pencil edit-button" data-toggle="modal" data-target="#todoModal" data-whatever="user name"></button>
+            </div>
           </div>
           <div class="panel-body todo-description"> Description here
           </div>
