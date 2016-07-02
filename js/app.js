@@ -16,7 +16,9 @@ toDoApp.newItemTemplateClone = function() {
 toDoApp.addItemToPage = function(item){
   var newItem = toDo.newItemTemplateClone();
   newItem.find('.todo-title').prepend(item.title);
+  newItem.find('.todo-title').attr('id','title-'+item.id);
   newItem.find('.todo-description').html(item.description);
+  newItem.find('.todo-description').attr('id','description-'+ item.description);
   newItem.find('.edit-button').attr('id',item.id);
 
   $('#pending-panel-list').append(newItem);
@@ -74,7 +76,14 @@ toDoApp.clearCloseButton = function(){
 
 //method for deleting Task
 toDoApp.delete = function(){
+  var id = $(this).attr('id');
+  var arr=toDoApp.toDoItems;
   $(this).closest('li').remove()
+  arr.splice(arr.forEach(function(item){
+    if (item.id == id){
+      return item;
+    }
+  }), 1);
 }
 
 //method for editing tasks
@@ -86,11 +95,23 @@ toDoApp.edit = function(){
       thisTask = item;
     }
   });
-
+    //updates form with current task data
   $("#title-input").val(thisTask.title);
   $("#description-input").val(thisTask.description);
   $("#time-input").val(thisTask.time);
   $("#priority-input").val(thisTask.priority);
+   //applies changes to Task
+  $("#submit-button").on("click", (e)=>{
+    //changes object
+    e.preventDefault();
+    thisTask.title = $("input[title-input]").val();
+    thisTask.description = $("#description-input").val();
+    thisTask.time = $("#time-input").val();
+    thisTask.priority = $("#priority-input").val();
+    //changes html element
+    $("#title-"+id).attr('text',thisTask.title);
+    $("#description-"+id).html(thisTask.description);
+  })
 }
 // Task appending to page
 var toDo = toDoApp;
