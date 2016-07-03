@@ -26,3 +26,7 @@ ul {
 body{
     margin-top: 2em;
 }
+.buttons-container{
+  position: relative;
+  top: -12px;
+}

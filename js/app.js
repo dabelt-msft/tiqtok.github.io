@@ -73,6 +73,7 @@ toDoApp.clearCloseButton = function(){
       console.log("form cleared");
       $("#form")[0].reset();
   //resets original submit functionality if closed from edit
+  $("#submit-button").off("click");
   $('#submit-button').on("click", toDo.onSubmitButtonClicked);
 }
 
@@ -119,16 +120,23 @@ toDoApp.edit = function(){
     var description = $("#description-input").val();
     var time = $("#time-input").val();
     var priority = $("#priority-input").val();
-    //changes object
-    toDo.editObj(thisTask,title,description,time,priority);
-    //changes html element;
-    $("#title-"+id).text(thisTask.title);
-    $("#description-"+id).html(thisTask.description);
-    //clears form
-    $("#form")[0].reset();
-    //switches event handlers
-    $("#submit-button").off("click");
-    $('#submit-button').on("click", toDo.onSubmitButtonClicked);
+    //toastr test
+    if(title!=""){
+      //changes object
+      toDo.editObj(thisTask,title,description,time,priority);
+      //changes html element;
+      $("#title-"+id).text(thisTask.title);
+      $("#description-"+id).html(thisTask.description);
+      //clears form
+      $("#form")[0].reset();
+      //switches event handlers
+      $("#submit-button").off("click");
+      $('#submit-button').on("click", toDo.onSubmitButtonClicked);
+      // close the form modal
+      $('#todoModal').modal('hide');
+    } else{
+          toastr.warning('Please enter a title', {timeOut: 2000});
+      }
   })
 }
 // Task appending to page
