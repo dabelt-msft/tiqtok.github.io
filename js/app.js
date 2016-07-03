@@ -1,3 +1,5 @@
+//strict typing
+'use strict';
 //Item creation
 var toDoApp={};
 toDoApp.toDoItems=[];
@@ -39,18 +41,6 @@ toDoApp.onSubmitButtonClicked = function(e){
     }
     //adds functionality for edit and delete button
 }
-//toggles form when hide button is clicked
-toDoApp.onHideButtonClicked = function(e){
-  e.preventDefault();
-    $("#form-wrapper").hide();
-    $("#show-button").show();
-}
-
-toDoApp.onShowButtonClicked = function(e){
-    e.preventDefault();
-    $("#form-wrapper").show();
-    $("#show-button").hide();
-}
 
 toDoApp.panelList = function(){
   return $('#pending-panel-list, #in-progress-panel-list, #completed-panel-list');
@@ -87,17 +77,33 @@ toDoApp.delete = function(){
     }
   }), 1);
 }
+//event handler for submitting edits
+toDoApp.onSumbitAfterEditClicked = function(task){
+  //toastr test
+  if($("#title-input").val()!=""){
+    //changes object
+    task.title = $("#title-input").val();
+    task.description = $("#description-input").val();
+    task.time = $("#time-input").val();
+    task.priority= $("#priority-input").val();
+    //changes html element;
+    $("#title-"+task.id).text(task.title);
+    $("#description-"+task.id).html(task.description);
+    //clears form
+    $("#form")[0].reset();
+    //switches event handlers
+    $("#submit-button").off("click");
+    $('#submit-button').on("click", toDo.onSubmitButtonClicked);
+    // close the form modal
+    $('#todoModal').modal('hide');
 
-//method for editing toDoItems
-toDoApp.editObj = function(obj,title,description,time,priority){
-  obj.title = title;
-  obj.description = description;
-  obj.time = time;
-  obj.priority = priority;
+  } else{
+        toastr.warning('Please enter a title', {timeOut: 2000});
+    }
 }
 
 //method for editing tasks
-toDoApp.edit = function(){
+toDoApp.onEditButtonClicked = function(){
   var id = $(this).attr('id');
   var thisTask;
   toDoApp.toDoItems.forEach(function(item){
@@ -113,31 +119,10 @@ toDoApp.edit = function(){
   //turns off original submit handler
   $("#submit-button").off("click",toDo.onSubmitButtonClicked)
    //adds new handler that applies changes to Task
-  $("#submit-button").on("click", (e)=>{
+  $("#submit-button").on("click",(e) => {
     e.preventDefault();
-    var title = $("#title-input").val();
-    var description = $("#description-input").val();
-    var time = $("#time-input").val();
-    var priority = $("#priority-input").val();
-    //toastr test
-    if(title!=""){
-      //changes object
-      toDo.editObj(thisTask,title,description,time,priority);
-      //changes html element;
-      $("#title-"+id).text(thisTask.title);
-      $("#description-"+id).html(thisTask.description);
-      //clears form
-      $("#form")[0].reset();
-      //switches event handlers
-      $("#submit-button").off("click");
-      $('#submit-button').on("click", toDo.onSubmitButtonClicked);
-      // close the form modal
-      $('#todoModal').modal('hide');
-
-    } else{
-          toastr.warning('Please enter a title', {timeOut: 2000});
-      }
-  })
+    toDo.onSumbitAfterEditClicked(thisTask)
+   });
 }
 // Task appending to page
 var toDo = toDoApp;
@@ -175,4 +160,4 @@ $('#add-item-button').on("click", toDo.onAddItemClicked);
 
 //adds edit and delete event listeners
 $('.top-buffer').on('click', '.delete-button', toDo.delete);
-$('.top-buffer').on('click','.edit-button', toDo.edit);
+$('.top-buffer').on('click','.edit-button', toDo.onEditButtonClicked);
