@@ -73,7 +73,6 @@ toDoApp.clearCloseButton = function(){
       console.log("form cleared");
       $("#form")[0].reset();
   //resets original submit functionality if closed from edit
-  $("#submit-button").off("click");
   $('#submit-button').on("click", toDo.onSubmitButtonClicked);
 }
 
@@ -134,6 +133,7 @@ toDoApp.edit = function(){
       $('#submit-button').on("click", toDo.onSubmitButtonClicked);
       // close the form modal
       $('#todoModal').modal('hide');
+
     } else{
           toastr.warning('Please enter a title', {timeOut: 2000});
       }
